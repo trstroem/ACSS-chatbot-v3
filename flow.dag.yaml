@@ -78,7 +78,7 @@ nodes:
     contexts: ${process_search_result.output}
     question: ${inputs.question}
   provider: AzureOpenAI
-  connection: trondsOpenAIConnection
+  connection: [name of your Azure OpenAI connection goes here]
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
