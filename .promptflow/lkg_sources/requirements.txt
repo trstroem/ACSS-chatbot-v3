@@ -1,4 +1,0 @@
-azure-identity
-azure-mgmt-workloadssapvirtualinstance
-azure.mgmt.subscription
-azure.mgmt.workloads
