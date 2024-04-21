@@ -1,0 +1,161 @@
+{
+  "package": {},
+  "code": {
+    "extract_query_from_question.jinja2": {
+      "name": "extract_query_from_question.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${inputs.chat_history}",
+          "id": "l6v2x0i1"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${inputs.question}",
+          "id": "psfr95yq"
+        }
+      },
+      "source": "extract_query_from_question.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "extract_query_from_question.jinja2"
+    },
+    "process_search_result.py": {
+      "name": "process_search_result.py",
+      "type": "python",
+      "inputs": {
+        "search_result": {
+          "type": [
+            "object"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${get_acss_url.output}",
+          "id": "rt7ky1pe"
+        }
+      },
+      "source": "process_search_result.py",
+      "function": "process_search_result",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "process_search_result.py"
+    },
+    "augmented_chat.jinja2": {
+      "name": "augmented_chat.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${inputs.chat_history}",
+          "id": "es18jf63"
+        },
+        "contexts": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${process_search_result.output}",
+          "id": "thqnhhlv"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${inputs.question}",
+          "id": "05x1gskb"
+        }
+      },
+      "source": "augmented_chat.jinja2",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "augmented_chat.jinja2"
+    },
+    "get_acss_url.py": {
+      "name": "get_acss_url.py",
+      "type": "python",
+      "inputs": {
+        "clientId": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "0f98d004-996b-4a62-b0d8-a779a522d247",
+          "id": "5pej70zv"
+        },
+        "clientSecret": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "bMb8Q~n.sxbq5R6o52EdsO9pN1oyrnc9KxB9Pbf5",
+          "id": "bqhh8q4m"
+        },
+        "question": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${extract_query_from_question.output}",
+          "id": "5kt62jn5"
+        },
+        "subId": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "2b331373-3d36-4585-bdb9-d3364786e775",
+          "id": "n7wxj08p"
+        },
+        "tenantId": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+          "id": "f7c0i8rv"
+        }
+      },
+      "source": "get_acss_url.py",
+      "function": "get_acss_url",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "get_acss_url.py"
+    }
+  }
+}
