@@ -47,11 +47,11 @@ nodes:
     type: code
     path: get_acss_url.py
   inputs:
-    clientId: 0f98d004-996b-4a62-b0d8-a779a522d247
-    clientSecret: bMb8Q~n.sxbq5R6o52EdsO9pN1oyrnc9KxB9Pbf5
+    clientId: [client ID goesw here]
+    clientSecret: [client Secret goes here]
     question: ${extract_query_from_question.output}
-    subId: 2b331373-3d36-4585-bdb9-d3364786e775
-    tenantId: 72f988bf-86f1-41af-91ab-2d7cd011db47
+    subId: [Subscription ID goes here]
+    tenantId: [Tenant ID goes here]
   use_variants: false
 - name: process_search_result
   type: python
