@@ -16,8 +16,25 @@ Once you have the Azure OpenAI deployment and your Service Principal, you will n
 
 There are several ways to recreate this flow, but the process described below is probably the easiest:
 1. Download this repository to your local machine
+
 2. From Azure ML Studio, select Flows, then Create, then (on the bottom of the screen) select Upload from local.
-3. In the Azure ML Studio, edit the steps of the flow by entering the Azure OpenAI connection and deployment details, followed by the secrets described above (the AOAI connection and deployment should be selectable from dropdown boxes).
+
+3. In the Azure ML Studio, start by selecting a runtime at the top of the flow builder (selecting "automatic" is fine - this will take 2-3 minutes to spin up).
+
+4. Enter the Azure OpenAI connection and deployment details, followed by the secrets described above (the AOAI connection and deployment should be selectable from dropdown boxes; these are located at the top of the "extract_quesr_from_question" and "augmented_chat" steps, respectively). For each step, click the "Validate and parse input" button at the bottom of the step in order to allow for entering secrets into the right input variables - you need to have the "runtime" described above up & running for this to work.
+
+5. Enter the following Input values for the steps "extract_query_from_question" and "augmented_chat":
+
+- extract_query_from_question, input value for "chat_history": ${inputs.chat_history}
+- extract_query_from_question, input value for "question": ${inputs.question}
+- augmented_chat, input value for "chat_history": ${inputs.chat_history}
+- augmented_chat, input value for "contexts": ${process_search_result.output}
+- augmented_chat, input value for "question": ${inputs.question}
+
+6. Now, you can run the flow - and check the results of the call to ACSS. If everything is configured properly, you should be able to see JSON output with details of your SAP VIS instances.
+
+7. Finally, Deploy your flow to an endpoint by clicking the Deploy button on top of your screen. This process takes a few minutes. When completed, you can select the Endpoints pane on the left of the screen and test the flow in chat mode. Try asking questions like "How many SAP systems do I have", "What are their respective resource groups", or "what are the kernel patch levels for the applications servers". Enjoy!
+
 
 ## Tools used in this flow
 - LLM tool
