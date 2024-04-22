@@ -26,7 +26,7 @@ nodes:
     type: code
     path: extract_query_from_question.jinja2
   inputs:
-    deployment_name: [your Azure OpenAI deployment name goes here]
+    deployment_name: [your AOAI deployment name goes here]
     temperature: 0.7
     top_p: 1
     max_tokens: 256
@@ -37,7 +37,7 @@ nodes:
     chat_history: ${inputs.chat_history}
     question: ${inputs.question}
   provider: AzureOpenAI
-  connection: [your Azure OpenAI connection name goes here]
+  connection: [your AOAI connection name goes here]
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
@@ -47,11 +47,11 @@ nodes:
     type: code
     path: get_acss_url.py
   inputs:
-    clientId: [client ID goesw here]
-    clientSecret: [client Secret goes here]
+    clientId: [your SP client ID goes here]
+    clientSecret: [your SP client secret gors here]
     question: ${extract_query_from_question.output}
-    subId: [Subscription ID goes here]
-    tenantId: [Tenant ID goes here]
+    subId: [your subscription ID goes here]
+    tenantId: [your tenant ID goes here]
   use_variants: false
 - name: process_search_result
   type: python
@@ -67,7 +67,7 @@ nodes:
     type: code
     path: augmented_chat.jinja2
   inputs:
-    deployment_name: [your Azure OpenAI deployment name goes here]
+    deployment_name: [your AOAI deployment name goes here]
     temperature: 0.8
     top_p: 1
     response_format:
@@ -78,7 +78,7 @@ nodes:
     contexts: ${process_search_result.output}
     question: ${inputs.question}
   provider: AzureOpenAI
-  connection: [name of your Azure OpenAI connection goes here]
+  connection: [your AOAI connection goes here]
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
