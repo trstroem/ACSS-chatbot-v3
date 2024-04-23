@@ -4,13 +4,13 @@ This is a sample flow to ask ACSS for data about SAP on Azure Virtual Instances.
 
 ## Prerequisites:
 
-You will need an Azure OpenAI instance, with one deployment. The deployment should use the gpt-4 model. You can create this by opening the Azure AI Studio from your Azure portal, then selecting Deployments under the Management menu on the left. Create a new deployment and select the gpt-4 model. Leave other options as is.
+You will need an Azure OpenAI instance, with one deployment. The deployment should use the gpt-4 model (although gpt-35 should also work. I haven't tried). You can create this by opening the Azure AI Studio from your Azure portal, then selecting Deployments under the Management menu on the left. Create a new deployment and select the gpt-4 (or 3.5 if that's what you have available) model. Leave other options "as-is".
 
-You also need an ACSS (Azure Center for SAP Solutions) instance with at least one SAP VIS (virtual instance) registered.
+You also need an ACSS (Azure Center for SAP Solutions) instance with at least one SAP VIS (virtual instance) registered. This does not need to be in the same subscription - or even tenant - as your ML deployment. See next paragraph.
 
-Finally, you will need a Service Principal for interacting with the ACSS instance. This SP must have Reader rights on the subscription where the ACSS instance exists.
+Finally, you will need a Service Principal for interacting with the ACSS instance. This SP must have Reader rights on the subscription (or tenant) where the ACSS instance resides.
 
-Once you have the Azure OpenAI deployment and your Service Principal, you will need to enter some secrets into the flow.dag.yaml file. The placeholders for these secrets are currently marked in brackets - [] - and refer to your Azure tenant ID, subscription, SP ID and secret, as well as the Azure OpenAI deployment name and connection.
+With all of this done, you should be ready to deploy the flow in Azure ML Studio. See next section.
 
 ## How to deploy
 
@@ -21,7 +21,7 @@ There are several ways to recreate this flow, but the process described below is
 
 3. Once the flow is imported, select a "runtime" at the top of the flow builder (selecting "automatic" is fine - this will take 2-3 minutes to spin up).
 
-4. Now, edit the steps as follows: Enter the Azure OpenAI connection and deployment details, followed by the SP ID, secret, tenant ID and subscription ID mentioned above (the AOAI connection and deployment should be selectable from dropdown boxes; these are located at the top of the "extract_query_from_question" and "augmented_chat" steps, respectively). For each step, click the "Validate and parse input" button at the bottom of the step in order to allow for entering secrets into the right input variables - you need to have the "runtime" described above up & running for this to work. Save the flow when done.
+4. Now, edit the steps as follows: Enter the Azure OpenAI connection and deployment details, followed by the SP ID, secret, tenant ID and subscription ID mentioned above (the AOAI connection and deployment should be selectable from dropdown boxes; these are located at the top of the "extract_query_from_question" and "augmented_chat" steps, respectively). For each step, start by clicking the big blue "Validate and parse input" button located at the bottom of the step in order to allow for entering secrets into the right input variables - you need to have the "runtime" described above up & running for this to work. Save the flow when done.
 
 5. Now, you can run the flow (use the Chat option to chat with it) - and check the results of the call to ACSS. If everything is configured properly, you should be able to see JSON output with details of your SAP VIS instances. The Chat functionality should also allow you to ask questions related to your ACSS implementation; note that when testing this from the flow builder, it will take some seconds for each reply to arrive.
 
