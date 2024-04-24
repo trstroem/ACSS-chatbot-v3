@@ -19,7 +19,7 @@ There are several ways to recreate this flow, but the process described below is
 
 2. From Azure ML Studio, select Flows, then Create, then (on the bottom of the screen) select Upload from local. Select the file folder where you downloaded the repository in the previous step. Make sure the folder has no sub-folders; all files (like the "flow.dag.yaml") must be present in the folder you refer to. IMPORTANT: Also remember to select type "chat" for the flow! (If you forget this, and create a flow as type Standard, the chat function won't work).
 
-![Upload](/images/upload.png?raw=true "Uploading from a local folder")
+![Upload](/images/upload.png?width=50% "Uploading from a local folder")
 
 
 3. Once the flow is imported, select a "runtime" at the top of the flow builder (selecting "automatic" is fine - this will take 2-3 minutes to spin up).
@@ -40,6 +40,9 @@ There are several ways to recreate this flow, but the process described below is
 
 
 6. Finally, Deploy your flow to an endpoint by clicking the Deploy button on top of your screen. This process takes a few minutes. When completed, you can click on the Endpoints pane on the left of the screen and test the flow in chat mode. Try asking questions like "How many SAP systems do I have", "What are their respective resource groups", or "what are the kernel patch levels for the applications servers". Enjoy!
+
+![Chat](/images/chat.png?raw=true "Chatting with the bot")
+
 
 7. From here, you should be able to consume the endpoint from any front-end you like. Build a new App or integrate the endpoint into an existing one of your preference!
 
