@@ -36,7 +36,7 @@ There are several ways to recreate this flow, but the process described below is
 
 5. Now, you can run the flow (use the Chat option to chat with it) - and check the results of the call to ACSS. If everything is configured properly, you should be able to see JSON output with details of your SAP VIS instances. The Chat functionality should also allow you to ask questions related to your ACSS implementation; note that when testing this from the flow builder, it will take some seconds for each reply to arrive.
 
-![Outputs](/images/outputs.png?raw=true "Output section")
+![Outputs](/images/output.png?raw=true "Output section")
 
 
 6. Finally, Deploy your flow to an endpoint by clicking the Deploy button on top of your screen. This process takes a few minutes. When completed, you can click on the Endpoints pane on the left of the screen and test the flow in chat mode. Try asking questions like "How many SAP systems do I have", "What are their respective resource groups", or "what are the kernel patch levels for the applications servers". Enjoy!
