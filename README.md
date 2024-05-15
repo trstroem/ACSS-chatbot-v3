@@ -10,7 +10,7 @@ You also need an ACSS (Azure Center for SAP Solutions) instance with at least on
 
 Finally, you will need a Service Principal for interacting with the ACSS instance. This SP must have Reader rights on the subscription (or tenant) where the ACSS instance resides.
 
-With all of this done, you should be ready to deploy the flow in Azure ML Studio. See next section.
+With all of this done, you should be ready to deploy the flow in Azure ML Studio. Note: prompt flows can also be built in the Azure AI Studio - but the connection to Azure OpenAI seems to be less obvious and a bit error-prone. For now, the best option is to create the flow from the Azure ML Studio - ml.azure.com.
 
 ## How to deploy
 
@@ -26,6 +26,7 @@ There are several ways to recreate this flow, but the process described below is
 
 ![Runtime](/images/runtime.png?raw=true "Flow runtime selector")
 
+You will now have to create a "connection" to the Azure AI deployment which you already created as part of the prerequisites. You can do that by selecting the Create Connection option at the top of the flow screen. Note that this step might incur an error message (due to a hard-coded placeholder for the AI deployment name in the flow code). Just re-select Prompt Flows on the left menu to get rid of the error - this should work just fine.
 
 4. Now, edit the steps as follows: Enter the Azure OpenAI connection and deployment details, followed by the SP ID, secret, tenant ID and subscription ID mentioned above (the AOAI connection and deployment should be selectable from dropdown boxes; these are located at the top of the "extract_query_from_question" and "augmented_chat" steps, respectively). For each step, start by clicking the big blue "Validate and parse input" button located at the bottom of the step in order to allow for entering secrets into the right input variables - you need to have the "runtime" described above up & running for this to work. Save the flow when done.
 
