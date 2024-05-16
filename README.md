@@ -47,6 +47,9 @@ You will now have to create a "connection" to the Azure AI deployment which you 
 
 7. From here, you should be able to consume the endpoint from any front-end you like. Build a new App or integrate the endpoint into an existing one of your preference!
 
+## Known issues
+
+The extraction of information about the ACSS VIS returns different collection of information depending on whether the SAP system was deployed from within ACSS, or simply registered with ACSS. This means the sample code in step get_acss_url may throw errors. For instance, the VIS object of a registered VIS system will possibly not contain the embedded "infrastructure_configuration" object. You can use the "jsonpickle" package to inspect the dictionary structure of your VIS objects (use jsonpickle.encode(object) to do this) - then accommodate your own code based on what information is available. The provided code sample should work for ACSS-deployed systems "as-is".
 
 ## Tools used in this flow
 - LLM tool
